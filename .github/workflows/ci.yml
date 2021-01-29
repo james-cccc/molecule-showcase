@@ -27,7 +27,7 @@ jobs:
 
       - name: Install test dependencies.
         run: |
-          pip3 install molecule docker yamllint ansible-lint
+          pip3 install molecule[podman] docker yamllint ansible-lint
           sudo apt-get update -qq
           sudo apt-get -qq -y install podman
 
