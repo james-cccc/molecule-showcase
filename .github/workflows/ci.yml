@@ -30,6 +30,8 @@ jobs:
           pip3 install molecule[podman] docker yamllint ansible-lint
           sudo apt-get update -qq
           sudo apt-get -qq -y install podman
+          mkdir -p /run
+          mkdir -p /tmp
 
       - name: Run Molecule tests.
         run: molecule test
