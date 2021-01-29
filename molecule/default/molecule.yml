@@ -9,6 +9,7 @@ platforms:
     tmpfs:
       - /run
       - /tmp
+    privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     capabilities:
