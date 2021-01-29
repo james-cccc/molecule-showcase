@@ -31,7 +31,6 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get -qq -y install podman
           sudo mkdir -p /run/dbus
-          sudo /etc/init.d/dbus start
 
       - name: Run Molecule tests.
         run: molecule test
