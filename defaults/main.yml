@@ -1,0 +1,7 @@
+---
+# defaults file for molecule-showcase
+users:
+  - username: opsa
+    groups: wheel
+  - username: opsb
+    groups: wheel
