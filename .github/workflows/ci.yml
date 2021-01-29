@@ -33,6 +33,7 @@ jobs:
           sudo mkdir -p /run/dbus
           sudo apt install dbus-user-session
           sudo systemctl status
+          sudo systemctl daemon-reload
 
       - name: Run Molecule tests.
         run: molecule test
