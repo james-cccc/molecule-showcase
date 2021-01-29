@@ -2,6 +2,6 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include molecule-showcase"
+    - name: "Include molecule_showcase"
       include_role:
-        name: "molecule-showcase"
+        name: "molecule_showcase"

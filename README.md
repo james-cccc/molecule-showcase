@@ -3,6 +3,8 @@ Role Name
 
 A brief description of the role goes here.
 
+![CI](https://github.com/james-cccc/molecule_showcase/workflows/CI/badge.svg)
+
 Requirements
 ------------
 
