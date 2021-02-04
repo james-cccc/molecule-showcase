@@ -10,7 +10,6 @@ defaults:
   run:
     working-directory: 'molecule_showcase'
 
-
 jobs:
 
   lint:
@@ -19,6 +18,8 @@ jobs:
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
+        with:
+          path: 'molecule_showcase'
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
@@ -40,7 +41,6 @@ jobs:
       matrix:
         distro:
           - rhel8
-
     steps:
       - name: Check out the codebase.
         uses: actions/checkout@v2
