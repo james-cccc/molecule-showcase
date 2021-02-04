@@ -11,6 +11,7 @@
   user:
     name: "{{ item.username }}"
     groups: "{{ item.groups }}"
+    password: "{{ lookup('password', './password.{{ item.username }} chars=ascii_lowercase,digits length=6') }}"
   loop: "{{ users }}"
 
 - name: Ensure apache is present
@@ -19,6 +20,7 @@
     state: present
 
 - name: Make sure a service is running
-  systemd:
+  service:
     state: started
     name: httpd
+    enabled: true

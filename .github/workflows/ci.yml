@@ -6,19 +6,48 @@ name: CI
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: 'molecule_showcase'
+
+
 jobs:
 
-  test:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+        with:
+          path: 'molecule_showcase'
+
+      - name: Set up Python 3.
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install test dependencies.
+        run: pip3 install yamllint ansible-lint
+
+      - name: Lint code.
+        run: |
+          yamllint .
+          ansible-lint
+
+    molecule:
     name: Molecule
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         distro:
           - rhel8
-    steps:
 
-      - name: checkout
+    steps:
+      - name: Check out the codebase.
         uses: actions/checkout@v2
+        with:
+          path: 'molecule_showcase'
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
@@ -27,13 +56,8 @@ jobs:
 
       - name: Install test dependencies.
         run: |
-          pip3 install molecule[podman] docker yamllint ansible-lint
-          sudo apt-get update -qq
+          pip3 install ansible molecule[podman] docker
           sudo apt-get -qq -y install podman
-          sudo mkdir -p /run/dbus
-          sudo apt install dbus-user-session
-          sudo systemctl status
-          sudo systemctl daemon-reload
 
       - name: Run Molecule tests.
         run: molecule test
