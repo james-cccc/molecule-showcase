@@ -35,7 +35,7 @@ jobs:
           yamllint .
           ansible-lint
 
-    molecule:
+  molecule:
     name: Molecule
     runs-on: ubuntu-latest
     strategy:
